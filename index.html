@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Time</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+</head>
+	<body>
+	    <main>
+	        <section class="timer-wrapper">
+	            <div class="timer-container" id="time">
+	                <watch v-for='(watch,index) in watches' v-model="watches[index]"></watch>
+	                <button class="timer-container__add timer" @click="add"></button>
+	            </div>
+	        </section>
+	    </main>
+	    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	    <script src="js/main.js"></script>
+	</body>
+</html>

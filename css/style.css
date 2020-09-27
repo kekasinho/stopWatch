@@ -1,0 +1,209 @@
+@font-face {
+  font-weight: normal;
+  font-family: "GothamPro";
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/GothamPro.woff") format("woff");
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+body {
+	font-family: "GothamPro";
+	background: #353638;
+}
+
+.timer-wrapper {
+	padding: 75px 45px;
+}
+
+.timer-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.start {
+	display: block;
+	border: 10px solid transparent; 
+	border-left: 15px solid #9E9E9E;
+	margin-right: 45px;
+	cursor: pointer;
+}
+
+.stop {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background-color: #9E9E9E;
+	cursor: pointer;
+}
+
+.pause {
+	display: block;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    position: relative;
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+.pause::before,
+.pause::after {
+	display: block;
+	width: 3px;
+	height: 100%;
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(calc(-50% + 4px), -50%);
+	background-color: #9E9E9E;
+}
+
+.pause::after {
+	transform: translate(calc(-50% - 4px), -50%);
+}
+
+.timer-item {
+	background-color: #696969;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-bottom: 45px;
+	width: 225px;
+	height: 120px;
+	box-sizing: border-box;
+}
+
+.timer-item__count-time {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	line-height: 21px;
+	text-align: center;
+	color: #9E9E9E;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #9E9E9E;
+}
+
+.timer-item__controls {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 20px;
+}
+
+.timer-container__add {
+	display: block;
+	border: none;
+	outline: none;
+	background: #696969;
+	position: relative;
+	width: 225px;
+	height: 120px;
+	cursor: pointer;
+}
+
+.timer-container__add::after {
+	content: "";
+	display: block;
+	background: #9E9E9E;
+	height: 20px; 
+	width: 3px;
+	position: absolute; 
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+.timer-container__add::before {
+	content: "";
+	display: block;
+	height: 20px; 
+	width: 3px;
+	background: #9E9E9E;
+	position: absolute; 
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.timer-item.active .timer-item__count-time {
+	transition: color 0.2s ease-in;
+	color: white;
+}
+
+.timer-item.active .pause::before, 
+.timer-item.active .pause::after {
+	transition: background-color 0.2s ease-in;
+	background-color: white;
+}
+
+.timer-item.active  .timer-item__count-time {
+	border-color: white;
+	transition: border-color 0.2s ease-in;
+}
+
+.timer-item.active .stop {
+	transition: background-color 0.2s ease-in;
+	background-color: white;
+}
+
+@media(min-width: 768px) {
+	.timer-container {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		align-items: stretch;
+		max-width: 500px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.timer:nth-child(2n) {
+		margin-left: 50px;
+	}
+}
+
+@media(min-width: 1024px) {
+	.timer-container {
+		max-width: 775px;
+	}
+
+	.timer {
+		margin-left: 50px;
+	}
+
+	.timer:nth-child(3n + 1) {
+		margin-left: 0;
+	}
+}
